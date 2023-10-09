@@ -5646,8 +5646,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Acts.Sort,
 		C3.Plugins.Arr.Acts.Reverse,
 		C3.Plugins.Arr.Cnds.ArrForEach,
-		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Arr.Exps.CurX,
+		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.iframe.Acts.SetPos,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.TriggerOnce,
@@ -6181,7 +6181,8 @@ self.C3_ExpressionFuncs = [
 			const n3 = p._GetNode(3);
 			const n4 = p._GetNode(4);
 			const n5 = p._GetNode(5);
-			return () => and(and(and(and(n0.ExpObject(n1.ExpObject(), 1), " | "), n2.ExpObject(n3.ExpObject(), 0)), " | "), n4.ExpObject(n5.ExpObject(), 2));
+			const n6 = p._GetNode(6);
+			return () => and((and((and((and("No. ", n0.ExpObject()) + " = "), n1.ExpObject(n2.ExpObject(), 1)) + " | "), n3.ExpObject(n4.ExpObject(), 0)) + " | "), n5.ExpObject(n6.ExpObject(), 2));
 		},
 		p => {
 			const n0 = p._GetNode(0);
