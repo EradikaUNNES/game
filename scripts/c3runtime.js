@@ -6248,8 +6248,8 @@ self.C3_ExpressionFuncs = [
 			return () => (and("{ \"current_score\": ", v0.GetValue()) + "}");
 		},
 		() => 10,
-		() => "Success updating score, congratulations!",
 		() => 5,
+		() => "Success updating score, congratulations!",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
