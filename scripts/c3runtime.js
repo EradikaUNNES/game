@@ -6148,7 +6148,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => and("Gedung ", v0.GetValue());
 		},
-		() => "https://eradika-gallery.bhsk.dev/",
+		() => "https://eradika.bhsk.dev/",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => C3.lerp(f0("LEADERBOARD"), 0, 0.08);
