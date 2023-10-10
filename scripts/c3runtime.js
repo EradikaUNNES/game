@@ -5786,6 +5786,7 @@ self.C3_JsPropNameTable = [
 	{popupClosed: 0},
 	{audio: 0},
 	{isZooming: 0},
+	{onIframeIntegritas: 0},
 	{STATE_CLICKED: 0},
 	{isVideoClicked: 0},
 	{isFileClicked: 0},
@@ -6117,17 +6118,21 @@ self.C3_ExpressionFuncs = [
 		() => "leaderboard_name",
 		() => "leaderboard_score",
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => C3.lerp(f0("Layer 0"), v1.GetValue(), 0.08);
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 1920, 0.04);
 		},
 		p => {
 			const n0 = p._GetNode(0);
+			return () => C3.lerp(n0.ExpObject(), 540, 0.04);
+		},
+		p => {
+			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 1420, 0.04);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => C3.lerp(f0("Layer 0"), v1.GetValue(), 0.08);
 		},
 		() => 0.1,
 		() => -100,
