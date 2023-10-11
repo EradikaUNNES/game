@@ -5588,7 +5588,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.Dictionary.Acts.JSONLoad,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
-		C3.Plugins.Dictionary.Exps.Get,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.LocalStorage.Cnds.OnItemMissing,
 		C3.Plugins.Dictionary.Acts.AddKey,
@@ -5654,7 +5653,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.LayerCmpOpacity,
 		C3.Plugins.iframe.Acts.NavigateURL,
 		C3.Plugins.System.Cnds.Every,
-		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Sprite.Acts.Spawn,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
@@ -6007,10 +6005,7 @@ self.C3_ExpressionFuncs = [
 		() => 4,
 		() => 6,
 		() => "auth",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpObject("USERNAME");
-		},
+		() => "fauyol",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (("Hi! Welcome back, " + v0.GetValue()) + "!");
@@ -6255,13 +6250,9 @@ self.C3_ExpressionFuncs = [
 		() => "update_score",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (and("{ \"current_score\": ", v0.GetValue()) + ", \"current_spot\": 2 }");
-		},
-		() => "PATCH",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
 			return () => (and("{ \"current_score\": ", v0.GetValue()) + "}");
 		},
+		() => "PATCH",
 		() => 10,
 		() => "Success updating score, congratulations!",
 		() => 5,
@@ -6280,10 +6271,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => add(add(n0.ExpObject("current_score"), 20), v1.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (and("{ \"current_score\": ", v0.GetValue()) + ", \"current_spot\": 3 }");
 		},
 		() => 20,
 		() => "KUIS",
@@ -6329,19 +6316,11 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => add(n0.ExpObject("current_score"), v1.GetValue());
 		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (and("{ \"current_score\": ", v0.GetValue()) + ", \"current_spot\": 4 }");
-		},
 		() => 0.7,
 		() => 25,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => add(n0.ExpObject("current_score"), 100);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (and("{ \"current_score\": ", v0.GetValue()) + ", \"current_spot\": 5 }");
 		},
 		() => "timer_tts",
 		p => {
@@ -6359,10 +6338,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => add(add(n0.ExpObject("current_score"), 50), v1.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (and("{ \"current_score\": ", v0.GetValue()) + ", \"current_spot\": 6 }");
 		},
 		() => 50,
 		p => {
