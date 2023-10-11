@@ -5742,6 +5742,7 @@ self.C3_JsPropNameTable = [
 	{poin_c: 0},
 	{poin_d: 0},
 	{poin_e: 0},
+	{hasAnswered: 0},
 	{acaksoal: 0},
 	{nomer: 0},
 	{kotakNo: 0},
@@ -6286,6 +6287,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 20,
 		() => "KUIS",
+		() => 0.4,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => ("puzzle_" + v0.GetValue());
