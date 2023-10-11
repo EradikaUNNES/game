@@ -5548,6 +5548,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
+		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Sprite.Acts.SetSize,
@@ -5564,7 +5565,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Text.Acts.SetY,
 		C3.Plugins.Text.Exps.Y,
-		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Exps.lowercase,
@@ -5764,6 +5764,7 @@ self.C3_JsPropNameTable = [
 	{Audio: 0},
 	{jsonLeaderboard: 0},
 	{arrLeaderboard: 0},
+	{jsonScore: 0},
 	{pos: 0},
 	{opa: 0},
 	{litetweens: 0},
@@ -5914,10 +5915,12 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 1);
 		},
+		() => 0.2,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 1);
 		},
+		() => 0.1,
 		() => 0,
 		() => "prev",
 		() => 300,
@@ -6069,6 +6072,7 @@ self.C3_ExpressionFuncs = [
 		() => -10,
 		() => "klik",
 		() => "leaderboard",
+		() => "score",
 		() => "avatar_user",
 		() => "name",
 		() => "skor",
@@ -6135,7 +6139,6 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => C3.lerp(f0("Layer 0"), v1.GetValue(), 0.08);
 		},
-		() => 0.1,
 		() => -100,
 		() => 80,
 		() => "back",
@@ -6204,6 +6207,10 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
 			return () => n0.ExpObject(n1.ExpObject(), 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => and(n0.ExpObject("current_score"), " Poin");
 		},
 		() => "tv",
 		() => "TV",
