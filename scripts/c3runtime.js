@@ -5588,6 +5588,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.LocalStorage.Cnds.OnItemGet,
 		C3.Plugins.Dictionary.Acts.JSONLoad,
 		C3.Plugins.LocalStorage.Exps.ItemValue,
+		C3.Plugins.Dictionary.Exps.Get,
 		C3.Plugins.Json.Exps.Get,
 		C3.Plugins.LocalStorage.Cnds.OnItemMissing,
 		C3.Plugins.Dictionary.Acts.AddKey,
@@ -6005,7 +6006,10 @@ self.C3_ExpressionFuncs = [
 		() => 4,
 		() => 6,
 		() => "auth",
-		() => "fauyol",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject("USERNAME");
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (("Hi! Welcome back, " + v0.GetValue()) + "!");
