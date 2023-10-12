@@ -5572,6 +5572,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.left,
 		C3.Plugins.System.Exps.len,
 		C3.Plugins.AJAX.Acts.Request,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.AJAX.Cnds.OnComplete,
 		C3.Plugins.Json.Acts.Parse,
 		C3.Plugins.AJAX.Exps.LastData,
@@ -5581,7 +5582,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Json.Exps.CurrentKey,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.AJAX.Acts.Post,
-		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.LocalStorage.Acts.CheckItemExists,
 		C3.Plugins.LocalStorage.Cnds.OnItemExists,
 		C3.Plugins.LocalStorage.Acts.GetItem,
@@ -5594,7 +5595,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Dictionary.Acts.AddKey,
 		C3.Plugins.LocalStorage.Acts.SetItem,
 		C3.Plugins.Dictionary.Exps.AsJSON,
-		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.LocalStorage.Acts.RemoveItem,
 		C3.Plugins.System.Acts.RestartLayout,
@@ -5648,6 +5648,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Cnds.ArrForEach,
 		C3.Plugins.Arr.Exps.CurX,
 		C3.Plugins.Arr.Exps.At,
+		C3.Plugins.Sprite.Cnds.IsOnLayer,
 		C3.Plugins.iframe.Acts.SetPos,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.TriggerOnce,
@@ -5666,7 +5667,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetScale,
 		C3.Plugins.System.Exps.zeropad,
 		C3.Behaviors.EightDir.Acts.SimulateControl,
-		C3.Plugins.Sprite.Cnds.OnCollision
+		C3.Plugins.Sprite.Cnds.OnCollision,
+		C3.Plugins.System.Cnds.Compare
 	];
 };
 self.C3_JsPropNameTable = [
@@ -5975,8 +5977,12 @@ self.C3_ExpressionFuncs = [
 			const v4 = p._GetNode(4).GetVar();
 			return () => f0(f1(v2.GetValue(), (f3(v4.GetValue()) - 1)));
 		},
+		() => "daftar",
 		() => "read_account",
 		() => "https://eradika-14e23-default-rtdb.asia-southeast1.firebasedatabase.app/accounts.json",
+		() => "punya",
+		() => 100,
+		() => 1,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -5990,7 +5996,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ("FOUND REGISTERED FOR: " + n0.ExpObject());
 		},
-		() => 1,
 		() => "OK",
 		() => "create_account",
 		p => {
@@ -6002,7 +6007,6 @@ self.C3_ExpressionFuncs = [
 			return () => (and("{ \"badge_unlocked\": 0, \"current_score\": 0, \"current_spot\": 1, \"profile_frame\": ", v0.GetValue()) + "}");
 		},
 		() => "PUT",
-		() => 100,
 		() => 4,
 		() => 6,
 		() => "auth",
@@ -6073,6 +6077,7 @@ self.C3_ExpressionFuncs = [
 		() => "klik",
 		() => "leaderboard",
 		() => "score",
+		() => "NORMAL",
 		() => "avatar_user",
 		() => "name",
 		() => "skor",
@@ -6143,7 +6148,6 @@ self.C3_ExpressionFuncs = [
 		() => 80,
 		() => "back",
 		() => "back_leaderboard",
-		() => "NORMAL",
 		() => "LEADERBOARD",
 		() => "zoom_in",
 		() => 1.75,
@@ -6152,6 +6156,8 @@ self.C3_ExpressionFuncs = [
 		() => 1.25,
 		() => "audio",
 		() => "menu",
+		() => "logout_no",
+		() => "logout_yes",
 		() => -239,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -6162,9 +6168,18 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => C3.lerp(f0("LEADERBOARD"), 0, 0.08);
 		},
+		() => "KELUAR",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => C3.lerp(f0("KELUAR"), 0, 0.08);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => C3.lerp(f0("LEADERBOARD"), 100, 0.08);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => C3.lerp(f0("KELUAR"), 100, 0.08);
 		},
 		() => 8,
 		p => {
@@ -6212,6 +6227,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => and(n0.ExpObject("current_score"), " Poin");
 		},
+		() => "UI",
 		() => "tv",
 		() => "TV",
 		() => "rak",
@@ -6347,7 +6363,28 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => ("labirin_" + v0.GetValue());
-		}
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => C3.lerp(n0.ExpObject(), 553, 0.08);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => C3.lerp(n0.ExpObject(), 502, 0.08);
+		},
+		() => "masuk",
+		() => "gapunya",
+		() => "null",
+		() => "FOUND!",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => ("Welcome, " + n0.ExpObject());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => ("Welcome, local : " + v0.GetValue());
+		},
+		() => "USER NOT FOUND"
 ];
 
 
