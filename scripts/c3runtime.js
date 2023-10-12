@@ -6157,6 +6157,7 @@ self.C3_ExpressionFuncs = [
 		() => "audio",
 		() => "menu",
 		() => "logout_no",
+		() => "KELUAR",
 		() => "logout_yes",
 		() => -239,
 		p => {
@@ -6168,7 +6169,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => C3.lerp(f0("LEADERBOARD"), 0, 0.08);
 		},
-		() => "KELUAR",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => C3.lerp(f0("KELUAR"), 0, 0.08);
